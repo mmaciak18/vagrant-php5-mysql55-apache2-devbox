@@ -1,13 +1,13 @@
 group { 'puppet': ensure => 'present' }
-
+Exec { path => ['/usr/local/bin', '/opt/local/bin', '/usr/bin', '/usr/sbin', '/bin', '/sbin'] }
 
 class system {
 	exec { 'apt-get update':
 	    command => '/usr/bin/apt-get update'
 	}
-	package { [
-    "nfs-common"
-  ] :
+
+	$corepackages = ["nfs-common", "memcached", "sendmail"]
+	package { $corepackages :
     ensure => latest,
     require => Exec["apt-get update"]
   }

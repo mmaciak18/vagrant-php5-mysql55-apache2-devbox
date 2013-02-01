@@ -18,72 +18,15 @@ class php54 {
     command => "/usr/bin/wget -q http://www.dotdeb.org/dotdeb.gpg -O -| /usr/bin/apt-key add -"
   }
 
-  package { [
-    "php5"
-  ] :
+  $phpcore = ["php5", "php5-dev", "php5-cli"]
+  $phpextensions = ["php5-apc", "php5-gd", "php5-xdebug", "php5-memcached", "php5-ldap", "php5-curl", "php5-mysqlnd"]
+
+  package { $phpcore :
     ensure => latest,
     require => Exec["apt-update"]
   }
 
-  package { [
-    "php5-dev"
-  ] :
-    ensure => latest,
-    require => Exec["apt-update"]
-  }
-
-  package { [
-    "php5-cli"
-  ] :
-    ensure => latest,
-    require => Exec["apt-update"]
-  }
-
-  package { [
-    "php5-apc"
-  ] :
-    ensure => latest,
-    require => Exec["apt-update"]
-  }
-
-  package { [
-    "php5-xdebug"
-  ] :
-    ensure => latest,
-    require => Exec["apt-update"]
-  }
-
-  package { [
-    "memcached"
-  ] :
-    ensure => latest,
-    require => Exec["apt-update"]
-  }
-
-  package { [
-    "php5-memcached"
-  ] :
-    ensure => latest,
-    require => Exec["apt-update"]
-  }
-
-  package { [
-    "php5-ldap"
-  ] :
-    ensure => latest,
-    require => Exec["apt-update"]
-  }
-
-  package { [
-    "php5-curl"
-  ] :
-    ensure => latest,
-    require => Exec["apt-update"]
-  }
-
-  package { [
-    "php5-mysqlnd"
-  ] :
+  package { $phpextensions :
     ensure => latest,
     require => Exec["apt-update"]
   }
