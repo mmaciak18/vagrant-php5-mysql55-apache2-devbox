@@ -18,6 +18,6 @@ class apache2 {
 
   service { "apache2":
     ensure => running,
-    require => Package["enable_rewrite"],
+    require => Exec["enable_rewrite"],
   }
 }
