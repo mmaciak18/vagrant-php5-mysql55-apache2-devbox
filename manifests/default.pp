@@ -6,7 +6,7 @@ class system {
 	    command => '/usr/bin/apt-get update'
 	}
 
-	$corepackages = ["nfs-common", "memcached", "sendmail"]
+	$corepackages = ["nfs-common", "memcached", "sendmail", "git"]
 	package { $corepackages :
     ensure => latest,
     require => Exec["apt-get update"]
