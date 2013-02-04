@@ -19,7 +19,7 @@ class php54 {
   }
 
   $phpcore = ["php5", "php5-dev", "php5-cli"]
-  $phpextensions = ["php5-apc", "php5-gd", "php5-xdebug", "php5-memcached", "php5-ldap", "php5-curl", "php5-mysqlnd"]
+  $phpextensions = ["php5-apc", "php5-gd", "php5-xdebug", "php5-memcached", "php5-ldap", "php5-curl", "php5-mysqlnd", "php-pear"]
 
   package { $phpcore :
     ensure => latest,
